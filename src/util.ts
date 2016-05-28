@@ -29,6 +29,16 @@ export function randInRange(min: number, max: number): number {
 }
 
 
+export function randBool(): boolean {
+	return randInRange(0, 1) > 0.5;
+}
+
+
+export function randFuel(): number {
+	return Math.sqrt(randInRange(0, 50));
+}
+
+
 export function randLatLng(): L.LatLng {
 	return L.latLng(
 		randInRange(WORLD_BOUNDS.lat.min, WORLD_BOUNDS.lat.max),

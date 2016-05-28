@@ -20,21 +20,35 @@ export class Player {
 		return this;
 	}
 
+	getLatLng(): L.LatLng {
+		return this.planet.getLatLng();
+	}
+
 	moveTo(destination: Planet): this {
 		if (this.planet) {
 			const distance: number = this.planet.getLatLng().distanceTo(
 				destination.getLatLng()
 			);
-			const fuelRequired: number = Math.sqrt(distance) / 100;
+			const fuelRequired: number = Math.sqrt(distance) / 20;
 			if (fuelRequired > this.fuel) {
-				messageUser(`Insufficient fuel (requires ${fuelRequired})`);
+				messageUser(
+					`Insufficient fuel (requires ${fuelRequired.toFixed(2)})`
+				);
 				return;
 			}
-			this.setFuel(this.fuel - distance);
+			this.setFuel(this.fuel - fuelRequired);
 			this.planet.closePopup();
 		}
 		this.planet = destination;
 		this.planet.bindPopup(this.popup).openPopup();
+
+		if (this.planet === jam.objective) {
+			$('#map-container').parent().html('<h1>Success!</h1>');
+		}
+		else if (this.planet.fuel) {
+			messageUser('Found fuel: ' + this.planet.fuel.toFixed(2));
+			this.setFuel(this.fuel + this.planet.fuel);
+		}
 		return this;
 	}
 }
