@@ -7,7 +7,21 @@ export type Planet = L.CircleMarker;
 export const map: L.Map = L.map('map-container');
 
 
-const planets: Planet[] = [];
+export const planets: Planet[] = [];
+
+
+export const player: Player = new Player();
+
+
+function onPlanetClick(ev: L.LeafletEvent): void {
+	player.moveTo(ev.target);
+}
+
+
+map.on('click', function(): void {
+	messageUser('');
+});
+
 
 for (let i: number = 0; i < MAX_PLANETS; ++i) {
 	const latlng: L.LatLng = randLatLng();
@@ -19,7 +33,7 @@ for (let i: number = 0; i < MAX_PLANETS; ++i) {
 	});
 	planets.push(planet);
 	map.addLayer(planet);
-	console.log('planet', latlng);
+	planet.on('click', onPlanetClick);
 }
 
 
@@ -35,6 +49,8 @@ planets.forEach((planet: Planet): void => {
 
 map.fitBounds(bounds);
 
+
+player.moveTo(planets[0]);
 
 
 } // namespace jam

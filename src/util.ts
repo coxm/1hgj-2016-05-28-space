@@ -16,6 +16,14 @@ export const WORLD_BOUNDS = {
 };
 
 
+export const MAX_FUEL: number = 100;
+
+
+export function messageUser(msg: string): void {
+	$('.message').text(msg);
+}
+
+
 export function randInRange(min: number, max: number): number {
 	return Math.random() * (max - min) + min;
 }

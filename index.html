@@ -5,7 +5,7 @@
 		<style>
 #map-container {
 	height: 800px;
-	background: url('http://www.nasa.gov/sites/default/files/thumbnails/image/potw1621a.jpg');
+	/* background: url('http://www.nasa.gov/sites/default/files/thumbnails/image/potw1621a.jpg'); */
 	background-size: 100% 100%;
 }
 		</style>
@@ -13,6 +13,10 @@
 
 	<body>
 		<div id="map-container"></div>
+		<div id="hud">
+			<div>Fuel: <span class="fuel"></span></div>
+			<div class="message"></div>
+		</div>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
 		<script type="text/javascript" src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 		<script type="text/javascript" src="build/jam.js"></script>
