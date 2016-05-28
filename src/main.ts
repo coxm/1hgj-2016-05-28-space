@@ -14,7 +14,8 @@ for (let i: number = 0; i < MAX_PLANETS; ++i) {
 	const planet: L.CircleMarker = new L.CircleMarker(latlng, {
 		fill: true,
 		fillColor: randColour(),
-		color: randColour()
+		color: randColour(),
+		fillOpacity: 1.0
 	});
 	planets.push(planet);
 	map.addLayer(planet);
