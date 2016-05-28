@@ -5,6 +5,7 @@ const ts = require('gulp-typescript');
 gulp.task('ts', function() {
 	gulp.src([
 		'typings/main.d.ts',
+		'src/util.ts',
 		'src/main.ts'
 	])
 	.pipe(ts({
